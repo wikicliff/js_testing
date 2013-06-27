@@ -1,0 +1,5 @@
+Misc ideas for colony1:
+
+* Very raw prototype to start with.
+* Possibly just rewrite HTML?
+* Game log window (separate from debug)
