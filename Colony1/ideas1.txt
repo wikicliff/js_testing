@@ -3,3 +3,15 @@ Misc ideas for colony1:
 * Very raw prototype to start with.
 * Possibly just rewrite HTML?
 * Game log window (separate from debug)
+
+-------
+New idea: rather than DF-like, make a 4X-like kind of kit.
+
+* Less competition freely available
+* Other 4X focus on making best single game rather than kit.
+
+Idea: make something with scope expandable to a game like Aurora, but with
+      modern HTML5 interface.
+
+Possibly eventually have mega-simulation running from DF-scale to
+  galactic empire (and beyond! :).
