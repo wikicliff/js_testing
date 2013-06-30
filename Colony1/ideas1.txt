@@ -15,3 +15,15 @@ Idea: make something with scope expandable to a game like Aurora, but with
 
 Possibly eventually have mega-simulation running from DF-scale to
   galactic empire (and beyond! :).
+
+--------
+Flexible time-step simulations
+
+* Possibly at higher speeds start abstracting out or randomly checking
+  lower-level sims.
+** ex: if 0.1% chance of a failure per task attempt, maybe do batches of 20
+   each with a 2% chance of a fail.
+*** For more fidelity, if 2% chance taken, then do the 20 individual sims?
+**** With one or more randomly chosen fails within those 20.
+**** Hard to match all percentages of original non-abstracted.
+
