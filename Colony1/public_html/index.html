@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
     <head>
         <title>Colony1</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="vendor/angular.js"></script>
+        <script src="vendor/jquery-2.0.3.js"></script>
     </head>
     <body>
         <div><h2>Colony prototype</h2></div>
+        <div>Info bar here.  <span id="turninfo">Turn Start</span></div>
         <div><p>Map here</p></div>
-        <div ng-app>
-            <div>
-                <label>Name:</label>
-                <input type="text" ng-model="yourName" placeholder="Enter a name here">
-                <hr>
-                <h1>Hello {{yourName}}!</h1>
-            </div>
-        </div>
+        <hr>
+        <button type="button" id="turnbutton">End Turn</button>
+        <script>
+            function say_hello() {
+                alert("Hello World!");
+            }
+            
+            $( document ).ready(function() {
+                $( "#turnbutton" ).click(function( event ) {
+                    say_hello();
+                });
+            });
+        </script>
     </body>
 </html>
