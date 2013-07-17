@@ -16,10 +16,23 @@
                 alert("Hello World!");
             }
             
-            $( document ).ready(function() {
+            var turnNum = 0;
+            
+            function nextTurn() {
+                turnNum += 1;
+                // display turn here or in main display?
+                // show processing is happening (busy...button text?)
+                console.log("Turn is now: " + turnNum);
+            }
+            function initGame() {
+                turnNum = 1;
                 $( "#turnbutton" ).click(function( event ) {
-                    say_hello();
-                });
+                    nextTurn();
+                });        
+            }
+            
+            $( document ).ready(function() {
+                initGame();
             });
         </script>
     </body>
