@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fleet game</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="vendor/jquery-2.0.3.js"></script>
+    </head>
+    <body>
+        <div><h2>Fleet game prototype</h2></div>
+        <hr>
+        <button type="button" id="turnbutton">End Turn</button>
+        <script>
+            var turnNum = 0;
+            
+            function nextTurn() {
+                turnNum += 1;
+                // display turn here or in main display?
+                // show processing is happening (busy...button text?)
+                console.log("Turn is now: " + turnNum);
+            }
+            function initGame() {
+                turnNum = 1;
+                $( "#turnbutton" ).click(function( event ) {
+                    nextTurn();
+                });        
+            }
+            
+            $( document ).ready(function() {
+                initGame();
+            });
+        </script>
+    </body>
+</html>
