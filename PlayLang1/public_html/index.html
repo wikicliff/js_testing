@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>PlayLang1</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
@@ -25,14 +25,22 @@
             function emitB() {
                 clog("B");
             }
-
-//            emitA();
-//            emitB();
-//            emitA();
-
             var a = emitA;
-            a.apply();
-            
+            var b = emitB;
+            var nop = function() {
+//                clog("Nop operation called");
+                ; // EMPTY
+            }
+
+            var seq1 = [a, b, nop, nop, a, nop, b];
+
+            var iState;
+            for (iState in seq1) {  // Note unordered
+                seq1[iState].apply();
+            }
+
+            // Next plan: work on 
+
         </script>
     </body>
 </html>

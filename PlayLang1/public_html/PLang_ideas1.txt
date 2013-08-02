@@ -1,0 +1,64 @@
+Ideas for "Play Language".
+
+Basic concept: a *VERY* high level language framework to support
+experimenting with programming language concepts.
+
+Major ideas:
+
+* Object-oriented source
+** Should be mappable *to* a readable text, but not necessarily stored as one.
+** JSON objects as source.
+** Disadvantage: requires special editor for efficient use
+
+* (later?) sequences of statement-objects
+** defaults to ordered list
+** can be unordered
+*** For testing, random order of unordered sequences
+**** seeded random, multiple different sequences
+
+========
+Plans:
+
+* Initially, don't worry about source issue
+** Create source-objects using JavaScript code
+
+
+=========
+Misc:
+
+* Comments are attached to source-objects
+** "comment-css" recommendations, like display to right of source line, or
+    display as paragraph attached (above or below).
+
+* Structured directives
+** Used in place of comment-oriented API docs, optimization comments, etc
+
+
+* (future/advanced): message-passing primary language
+** no ordinary function call bindings: all as messages
+*** send message, and an implementer of that interface will reply
+*** "message_reply" replacing function return values
+
+* "sfunction" for simple function definitions
+** list of arguments, all must be present in order
+
+* Functions will not have the usual arguments listing within parens.
+** Consider something more like:
+
+defineFunction: sayHello
+    argument: toWho
+        optional: true
+        default_value: 'world'
+    code:
+        print('Hello ' + toWho)
+
+==== end of sample ====
+
+
+* Environment encapsulation (virtualization)
+** Interface-driven
+** Interface: (child) envPerform(sourceObj)
+*** Performs sourceObj within child
+** Interface: (child->parent) envParentEvent(evt, data)
+*** Informs parent environment (if any) of event with data
+*** If no parent, does not act
