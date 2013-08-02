@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div>JavaScript PlayLanguage testing.  Using console for now.</div>
+        <script>
+            function say_hello() {
+                alert("Hello World!");
+            }
+            // say_hello();
+
+            function clog(log_stuff) {
+                console.log(log_stuff);
+            }
+
+            clog("Hello there!");
+
+            function emitA() {
+                clog("A");
+            }
+
+            function emitB() {
+                clog("B");
+            }
+
+//            emitA();
+//            emitB();
+//            emitA();
+
+            var a = emitA;
+            a.apply();
+            
+        </script>
+    </body>
+</html>
