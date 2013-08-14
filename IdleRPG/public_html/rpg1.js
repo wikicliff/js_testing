@@ -9,9 +9,13 @@ var SimTime = (function() {
         console.log("SimTime: now = " + simNow);
     }
 
+    function simEventScore(eventA) {
+        return eventA[0];
+    }
+
     function initTime() {
         simNow = 0;
-        simEvents = {};
+        simEvents = new BinaryHeap(simEventScore);
     }
 
     function advanceTime(fwdMS) {
@@ -22,10 +26,8 @@ var SimTime = (function() {
 
     // for now, no optimization
     function addEvent(atTime, data) {
-        if (!Array.isArray(simEvents[atTime])) {
-            simEvents[atTime] = [];
-        }
-        simEvents[atTime].push(data);   // Later data will be callback
+        // very early debug: just add time to priority queue
+        simEvents.push([atTime, data]);
         console.log("SimTime: " + simEvents);
     }
     
@@ -59,7 +61,10 @@ var IRPG = (function() {
         SimTime.initTime();
         SimTime.addEvent(14, "event at 14");
         SimTime.addEvent(25, "event at 25");
-        SimTime.advanceTime(17); // 17 ms forward
+        SimTime.addEvent(3, "event at 3");
+        SimTime.addEvent(17, "event at 17");
+        SimTime.addEvent(17, "Second event at 17");
+        SimTime.advanceTime(15); // 15 ms forward
         SimTime.advanceTime(23); // another 23 ms forward
     }
     
