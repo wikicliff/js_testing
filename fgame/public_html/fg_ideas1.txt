@@ -1,0 +1,105 @@
+Basic architecture of Fleet Game (fgame)
+
+fgame - main game object
+Has:
+* fgOption list (options not dependent on rulesets, like player name?)
+* fgDisplay (?)
+* fgMap
+* fgRuleset (list?)  (possibly contain rule code in here?)
+* fgRuleOption list
+* load/save functions
+* fgPlayer list
+* main game loop
+Ideas:
+** Possibly split more abstract into game state, with loop/main display
+   done with something like WebFGame
+
+fgMap - main map
+Has:
+* fgSystem list
+* fgFleet list
+* fgSystemLinks (links in warp-linked map)
+* code to display main map
+
+fgSystem - star system
+Has:
+* ID# for reference
+* Name of system
+* system improvements
+* Order list (to be done during the turn)
+* Drawing method for map
+** Possible drawing 
+Refers to:
+* ID#s of local fleets
+* (possibly) other close or linked systems
+* fgPlayer owner
+
+fgFleet
+Has:
+* ID# for reference
+* Strength (initial trivial)
+
+
+
+===========
+Misc ideas/text:
+
+* For easier debugging don't reuse any ID#s
+* Orders could have types, then be sorted for phases
+
+Phase order:
+* Produce
+* Move
+* Diplomacy (later)
+* Battle
+* Ownership changes (done after all battles)
+
+Question: what to do if 3 (or more) at-war fleets meet in one place?
+* Random pair, then winner fights others?
+* All arrivals fight first, then against planet?
+* micro-sim 3-way battle?
+* Weaker fleets temp-join against strongest?
+* Should be ruleset defined.
+
+
+==========
+(Make file later: Concepts4X ?)
+Concepts in (space) 4X games
+
+* Map
+** Travel methods
+*** Links
+*** blockages (with non-linked)
+*** Speed
+
+* Diplomacy
+* Trade (within self or other empire)
+* Player traits
+* Races (mostly trait collections or limits)
+* AI Personality (possibly player too?)
+** Trustworthy, expansionist, militaristic, peaceful
+* Espionage
+* Exploration
+* Governments
+* Random Events
+** Random opportunities (with choices)
+
+* Locations/Star systems
+** often Planets
+** could have hierarchy (region/constellation/star/planet-moons/nation/etc)
+
+* Economy
+* Resources
+** Credits as catch-all, often global
+** Food (usually local)
+** Power (electrical): local-only 
+
+* Population
+** Happiness
+** Security
+
+* Fleets
+* Ship types
+** Ship designer
+
+* Research
