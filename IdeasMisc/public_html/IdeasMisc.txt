@@ -1,0 +1,41 @@
+Misc. ideas (that don't fit into other idea files):
+
+===========
+JavaScript with Values
+
+* Basically similar to old "Smalltalk with values" idea, but with JS
+
+* New idea: go big with the tag data: 64 bits minimum
+* Memory layout:
+**  [64-bit tag/class word] [64-bit data or pointer]  pairs repeated.
+
+* Some tag bits reserved.  Reserve 8 bits for GC?
+** 1 bit "live/dead", 5 bits age, 2 bits other uses
+
+* Tag sub-structure:
+** Leave bits for extension, and/or use standard version bits?
+** 8 bits GC or other use
+** 8 bits major types
+** 16-bits sub-types
+*** May have some subtypes occupy ranges of 16-bit space
+** 32-bits individual prototypes of each subtype
+
+* Allow/use parent hierarchy chain?
+** Even Object could be in chain
+
+* Object versions
+** patching in new code to running system?
+** Possibility to create new code for Object on-the-fly, migrate all
+   existing instances to new version
+
+=============
+
+JavaScript in JavaScript
+
+* Implement basic but functional JS in JS code
+
+* Self-hosting in future
+** No other compilers needed
+** Similar to FORTH full recompile from source?
+
+=====================
