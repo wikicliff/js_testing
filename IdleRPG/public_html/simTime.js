@@ -23,19 +23,42 @@ var SimTime = (function() {
         simEvents = new BinaryHeap(simEventScore);
     }
 
+// later maybe have count of events, no need to check size (expensive?)
     function advanceTime(fwdMS) {
-        // Later do any events between current Now and new Now inclusive
-        simNow += fwdMS;
-        logNow();  // debug
+        var event;
+        var eventTime;
+        var eventCb;
+        var eventData;
+
+        if (simEvents.size() > 0) {
+            event = simEvents.peek();
+            eventTime = event[0];
+//            console.log("SimTime: advance peek1 = " + eventTime);
+            while ((eventTime <= (simNow + fwdMS)) && (simEvents.size() > 0)) {
+                // later maybe update simNow and fwdMS at each step?
+                // pop the data
+                event = simEvents.pop();
+                eventCb = event[1];
+                eventData = event[2];
+                eventCb(eventData);
+                // peek at the next time (if exists)
+                if (simEvents.size() > 0) {
+                    event = simEvents.peek();
+                    eventTime = event[0];
+//                    console.log("SimTime: advance peek2 = " + eventTime);
+                }
+            }
+            simNow += fwdMS;
+            logNow();  // debug
+        }
     }
 
     // for now, no optimization
-    function addEvent(atTime, data) {
-        // very early debug: just add time to priority queue
-        simEvents.push([atTime, data]);
+    function addEvent(atTime, cb, data) {
+        simEvents.push([atTime, cb, data]);
         console.log("SimTime events: ", simEvents);
     }
-    
+
     return {
         initTime: initTime,
         advanceTime: advanceTime,

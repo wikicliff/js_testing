@@ -17,13 +17,19 @@ var IRPG = (function() {
         });
     }
 
+    function simpleTimeCb(eventData) {
+        console.log("Event cb, data = |" + eventData + "|");
+    }
+
     function simpleTimeTest() {
         SimTime.initTime();
-        SimTime.addEvent(14, "event at 14");
-        SimTime.addEvent(25, "event at 25");
-        SimTime.addEvent(3, "event at 3");
-        SimTime.addEvent(17, "event at 17");
-        SimTime.addEvent(17, "Second event at 17");
+        SimTime.addEvent(14, simpleTimeCb, "event at 14");
+        SimTime.addEvent(25, simpleTimeCb, "event at 25");
+        SimTime.addEvent(3, simpleTimeCb, "event at 3");
+        SimTime.addEvent(17, simpleTimeCb, "event at 17");
+        SimTime.addEvent(17, simpleTimeCb, "Second event at 17");
+        SimTime.addEvent(297, simpleTimeCb, "event at 297");
+
         SimTime.advanceTime(15); // 15 ms forward
         SimTime.advanceTime(23); // another 23 ms forward
     }
